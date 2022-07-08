@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-DEVICE_PATH := device/oneplus/avicii
+DEVICE_PATH := device/oneplus/aviciiv2
 
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
@@ -108,6 +108,9 @@ TARGET_KERNEL_SOURCE := kernel/oneplus/sm7250
 # Platform
 TARGET_BOARD_PLATFORM := lito
 TARGET_USES_HARDWARE_QCOM_BOOTCTRL := true
+
+# Properties
+TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 
 # Recovery
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888

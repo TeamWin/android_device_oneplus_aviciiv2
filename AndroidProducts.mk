@@ -6,9 +6,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/twrp_avicii.mk
+    $(LOCAL_DIR)/twrp_aviciiv2.mk
 
 COMMON_LUNCH_CHOICES := \
-    twrp_avicii-user \
-    twrp_avicii-userdebug \
-    twrp_avicii-eng
+    twrp_aviciiv2-user \
+    twrp_aviciiv2-userdebug \
+    twrp_aviciiv2-eng
