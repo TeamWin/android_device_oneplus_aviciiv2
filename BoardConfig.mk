@@ -104,6 +104,7 @@ TARGET_KERNEL_ADDITIONAL_FLAGS := DTC_EXT=$(shell pwd)/prebuilts/misc/linux-x86/
 TARGET_KERNEL_CLANG_COMPILE := true
 TARGET_KERNEL_CONFIG := vendor/lito-perf_defconfig
 TARGET_KERNEL_SOURCE := kernel/oneplus/sm7250
+TARGET_NO_KERNEL := false
 
 # Platform
 TARGET_BOARD_PLATFORM := lito
@@ -111,9 +112,6 @@ TARGET_USES_HARDWARE_QCOM_BOOTCTRL := true
 
 # Properties
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
-
-# Recovery
-TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 
 # TWRP Debug
 TARGET_USES_LOGD := true
@@ -124,35 +122,36 @@ TARGET_RECOVERY_DEVICE_MODULES += strace
 RECOVERY_BINARY_SOURCE_FILES += $(TARGET_OUT_EXECUTABLES)/strace
 
 # TWRP Specific Build Flags
+TARGET_NO_RECOVERY := false
+TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
 TW_DEFAULT_BRIGHTNESS := 200
-TW_MAX_BRIGHTNESS := 1023
-TW_THEME := portrait_hdpi
-TW_EXTRA_LANGUAGES := true
-TW_EXCLUDE_APEX := true
 TW_EXCLUDE_DEFAULT_USB_INIT := true
-TW_NO_CPU_TEMP := true
-TW_NO_SCREEN_BLANK := true
+TW_EXTRA_LANGUAGES := true
+TW_HAS_EDL_MODE := true
 TW_INCLUDE_NTFS_3G := true
 TW_INCLUDE_REPACKTOOLS := true
 TW_INCLUDE_RESETPROP := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
-TW_USE_FSCRYPT_POLICY := 1
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file
-TW_HAS_EDL_MODE := true
+TW_MAX_BRIGHTNESS := 1023
+TW_NO_CPU_TEMP := true
+TW_NO_SCREEN_BLANK := true
 TW_OVERRIDE_SYSTEM_PROPS := \
     "ro.build.date.utc;ro.bootimage.build.date.utc=ro.build.date.utc;ro.odm.build.date.utc=ro.build.date.utc;ro.product.build.date.utc=ro.build.date.utc;ro.system.build.date.utc=ro.build.date.utc;ro.system_ext.build.date.utc=ro.build.date.utc;ro.vendor.build.date.utc=ro.build.date.utc;ro.build.product;ro.build.fingerprint=ro.system.build.fingerprint;ro.build.version.incremental;ro.product.device=ro.product.system.device;ro.product.model=ro.product.system.model;ro.product.name=ro.product.system.name"
-TW_Y_OFFSET := 128
+TW_THEME := portrait_hdpi
 TW_H_OFFSET := -128
+TW_Y_OFFSET := 128
 
 # TWRP Decryption
+BOARD_USES_METADATA_PARTITION := true
+BOARD_USES_QCOM_FBE_DECRYPTION := true
+PLATFORM_SECURITY_PATCH := 2127-12-31
 PLATFORM_VERSION := 127
 PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
 TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_CRYPTO_FBE := true
-BOARD_USES_METADATA_PARTITION := true
-BOARD_USES_QCOM_FBE_DECRYPTION := true
-PLATFORM_SECURITY_PATCH := 2127-12-31
+TW_USE_FSCRYPT_POLICY := 1
 VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
 
 # Extras
